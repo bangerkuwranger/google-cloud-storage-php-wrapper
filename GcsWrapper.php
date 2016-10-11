@@ -6,7 +6,7 @@ class cAcGoogleCloudStorage {
 	private $json_key;
 	private $project;
 	private $bucket_id;
-	private $objects[];
+	private $objects = [];
 	private $connection;
 	private $storage;
 	private $error_count = 0;
@@ -14,7 +14,7 @@ class cAcGoogleCloudStorage {
 	public $bucket;
 	public $acl;
 	public $object;
-	public $errors[];
+	public $errors = [];
 	
 	public function __construct( $project, $key, $bucket_id ) {
 	
