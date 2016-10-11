@@ -34,7 +34,7 @@ if( $_POST['submit'] === "Submit" ) {
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="projectid">Project ID</label>  
 		  <div class="col-md-4">
-		  <input id="projectid" name="projectid" type="text" placeholder="project-12345" class="form-control input-md" <?php echo empty( $p ) ? '' : 'value:"' . $p . '"'?> >
+		  <input id="projectid" name="projectid" type="text" placeholder="project-12345" class="form-control input-md" <?php echo empty( $p ) ? '' : 'value="' . $p . '"'?> >
 		  <span class="help-block">enter the id, not the name</span>  
 		  </div>
 		</div>
@@ -43,7 +43,7 @@ if( $_POST['submit'] === "Submit" ) {
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="bucketid">Bucket ID</label>  
 		  <div class="col-md-4">
-		  <input id="bucketid" name="bucketid" type="text" placeholder="your-bucket-id" class="form-control input-md" <?php echo empty( $b ) ? '' : 'value:"' . $b . '"'?> >
+		  <input id="bucketid" name="bucketid" type="text" placeholder="your-bucket-id" class="form-control input-md" <?php echo empty( $b ) ? '' : 'value="' . $b . '"'?> >
 		  <span class="help-block">enter the unique identifier for the bucket</span>  
 		  </div>
 		</div>
