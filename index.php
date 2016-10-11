@@ -2,7 +2,7 @@
 $b = '';
 $p = '';
 
-if( isset( $_POST['submit'] && "Submit" === $_POST['submit'] ) {
+if( isset( $_POST['submit'] && "Submit" === $_POST['submit'] ) ) {
 	
 	if( isset( $_POST['projectid'] ) && isset( $_POST['bucketid'] ) && isset( $_POST['jsonkey'] ) ) {
 	
