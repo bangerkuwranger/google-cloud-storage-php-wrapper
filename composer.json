@@ -1,5 +1,5 @@
 {
-  "name": "cAc/google-cloud-storage-php-wrapper",
+  "name": "cac/google-cloud-storage-php-wrapper",
   "description": "Google Cloud API PHP Wrapper for interacting with Google Cloud Storage",
   "license": "MIT",
   "authors": [
@@ -10,7 +10,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "cAc\\GcsWrapper": ""
+      "cAc\\GcsWrapper\\": ""
     }
   },
   "require": {
