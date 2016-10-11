@@ -18,7 +18,7 @@ class cAcGoogleCloudStorage {
 	
 	public function __construct( $project, $key, $bucket_id ) {
 	
-		if( empty( $project || $key || $bucket_id ) {
+		if( empty( $project || $key || $bucket_id ) ) {
 			$this->errors[$this->error_count] = "invalid project, key, or bucket";
 			$this->error_count++;
 		}
