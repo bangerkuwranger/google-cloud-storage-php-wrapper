@@ -1,5 +1,5 @@
 <?php
-namespace cAc\GcsWrapper\
+namespace cAc\GcsWrapper;
 
 class cAcGoogleCloudStorage {
 
