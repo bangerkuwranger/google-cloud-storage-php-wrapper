@@ -1,0 +1,22 @@
+{
+  "name": "cAc/google-cloud-storage-php-wrapper",
+  "description": "Google Cloud API PHP Wrapper for interacting with Google Cloud Storage",
+  "license": "MIT",
+  "authors": [
+    {
+    	"name": "Chad A. Carino",
+    	"email": "artist@chadacarino.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "cAc\\GcsWrapper": ""
+    }
+  },
+  "require": {
+	"google/gax": "^0.2.0",
+	"google/proto-client-php": "^0.4.0",
+	"google/cloud": "v0.10.1"
+  }
+}
+
