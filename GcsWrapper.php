@@ -1,6 +1,8 @@
 <?php
 namespace cAc\GcsWrapper;
 
+use Google\Cloud\ServiceBuilder;
+
 class cAcGoogleCloudStorage {
 
 	private $json_key;
@@ -33,8 +35,7 @@ class cAcGoogleCloudStorage {
 	}
 	
 	protected function connect_to_gcs() {
-	
-		use Google\Cloud\ServiceBuilder;
+		
 		$this->connection = new ServiceBuilder([
 			'projectId'	=> $this->project,
 			'keyFile'	=> $this->json_key
@@ -45,7 +46,6 @@ class cAcGoogleCloudStorage {
 	
 	protected function get_bucket_object() {
 	
-		use Google\Cloud\Storage\Bucket;
 		$this->bucket = $this->storage->bucket($this->bucket_id);
 		if( !( $this->bucket->exists() ) ) {
 		
