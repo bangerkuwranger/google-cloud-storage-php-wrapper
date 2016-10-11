@@ -1,9 +1,16 @@
 <?php
+$b = '';
+$p = '';
 
+if( $_POST['submit'] === "Submit" ) {
+
+	$b = $_POST['bucketid'];
+	$p = $_POST['projectid'];
+
+}
 ?>
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -27,7 +34,7 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="projectid">Project ID</label>  
 		  <div class="col-md-4">
-		  <input id="projectid" name="projectid" type="text" placeholder="project-12345" class="form-control input-md">
+		  <input id="projectid" name="projectid" type="text" placeholder="project-12345" class="form-control input-md" <?php echo empty( $p ) ? '' : 'value:"' . $p . '"'?> >
 		  <span class="help-block">enter the id, not the name</span>  
 		  </div>
 		</div>
@@ -36,7 +43,7 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="bucketid">Bucket ID</label>  
 		  <div class="col-md-4">
-		  <input id="bucketid" name="bucketid" type="text" placeholder="your-bucket-id" class="form-control input-md">
+		  <input id="bucketid" name="bucketid" type="text" placeholder="your-bucket-id" class="form-control input-md" <?php echo empty( $b ) ? '' : 'value:"' . $b . '"'?> >
 		  <span class="help-block">enter the unique identifier for the bucket</span>  
 		  </div>
 		</div>
@@ -58,6 +65,12 @@
 		</fieldset>
 
 	</form>
+	<div class="row">
+		<div id="post-values" class="col-md-4 col-md-offset-4">
+			<h2>Project: <?php echo $p ?></h2>
+			<h2>Bucket: <?php echo $b ?></h2>
+		</div>
+	</div>
 </body>
 <footer>
 	<div class="errors"></div>
