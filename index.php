@@ -80,8 +80,8 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 	</div>
 	<div class="row">
                 <div id="post-values" class="col-md-4 col-md-offset-4">
-                        <h2>Object:</h2>
-                        <p><?php print_r( $storage_test ) ?></p>
+                        <h2><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#showObject" aria-expanded="false" aria-controls="collapseExample">Object</button></h2>
+                        <p id="showObject" class="collapse"><?php print_r( $storage_test ) ?></p>
                 </div>
         </div>
 </content>
