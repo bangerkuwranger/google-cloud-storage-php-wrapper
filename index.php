@@ -1,6 +1,10 @@
 <?php
 
 ?>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -46,8 +50,8 @@
 		</div>
 		
 		<div class="form-group">
-		  <div class="col-md-4">                     
-			<input type="submit" class="form-control" id="submit" name="submit" value="Submit"/>
+		  <div class="col-md-4 col-md-offset-4">                     
+			<input type="submit" class="form-control btn btn-primary" id="submit" name="submit" value="Submit"/>
 		  </div>
 		</div>
 
