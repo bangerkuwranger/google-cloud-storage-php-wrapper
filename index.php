@@ -1,4 +1,5 @@
 <?php
+use cAc\GcsWrapper, Google\Cloud\ServiceBuilder;
 $b = '';
 $p = '';
 
@@ -9,9 +10,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		$b = $_POST['bucketid'];
 		$p = $_POST['projectid'];
 		require_once( __DIR__ . '/GcsWrapper.php' );
-		use cAc\GcsWrapper;
-		$storage_test = new cAcGoogleCloudStorage( $p, $_POST['jsonkey'], $b );
-	
+		$storage_test = new cAc\GcsWrapper\GoogleCloudStorage( $p, $_POST['jsonkey'], $b );	
 	}
 
 }
@@ -59,7 +58,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="jsonkey">JSON Key Content</label>
 		  <div class="col-md-4">                     
-			<textarea class="form-control" id="jsonkey" name="jsonkey"></textarea>
+			<textarea class="form-control" id="jsonkey" name="jsonkey"><?php echo $_POST['jsonkey'] ?></textarea>
 		  </div>
 		</div>
 		
@@ -76,8 +75,15 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		<div id="post-values" class="col-md-4 col-md-offset-4">
 			<h2>Project: <?php echo $p ?></h2>
 			<h2>Bucket: <?php echo $b ?></h2>
+			<p><?php // print_r( json_decode( $_POST['jsonkey'], true ) ) ?></p>
 		</div>
 	</div>
+	<div class="row">
+                <div id="post-values" class="col-md-4 col-md-offset-4">
+                        <h2>Object:</h2>
+                        <p><?php print_r( $storage_test ) ?></p>
+                </div>
+        </div>
 </content>
 <footer class="container">
 	<div class="errors">

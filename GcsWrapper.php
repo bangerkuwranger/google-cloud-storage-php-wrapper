@@ -1,9 +1,10 @@
 <?php
 namespace cAc\GcsWrapper;
 
+include_once('vendor/autoload.php');
 use Google\Cloud\ServiceBuilder;
 
-class cAcGoogleCloudStorage {
+class GoogleCloudStorage {
 
 	private $json_key;
 	private $project;
@@ -26,10 +27,10 @@ class cAcGoogleCloudStorage {
 		}
 		else {
 			$this->project = $project;
-			$this->json_key = $key;
+			$this->json_key = json_decode( $key, true );
 			$this->bucket_id = $bucket_id;
-			connect_to_gcs();
-			get_bucket_object();
+			$this->connect_to_gcs();
+			$this->get_bucket_object();
 		}
 	
 	}
@@ -59,4 +60,3 @@ class cAcGoogleCloudStorage {
 }
 
 
-?>
