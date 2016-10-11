@@ -9,6 +9,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		$b = $_POST['bucketid'];
 		$p = $_POST['projectid'];
 		require_once( __DIR__ . '/GcsWrapper.php' );
+		use cAc\GcsWrapper;
 		$storage_test = new cAcGoogleCloudStorage( $p, $_POST['jsonkey'], $b );
 	
 	}
