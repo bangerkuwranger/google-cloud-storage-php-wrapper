@@ -72,15 +72,15 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 
 	</form>
 	<div class="row">
-		<div id="post-values" class="col-md-4 col-md-offset-4">
+		<div id="post-values" class="col-md-6 col-md-offset-3">
 			<h2>Project: <?php echo $p ?></h2>
 			<h2>Bucket: <?php echo $b ?></h2>
 			<p><?php // print_r( json_decode( $_POST['jsonkey'], true ) ) ?></p>
 		</div>
 	</div>
 	<div class="row">
-                <div id="post-values" class="col-md-4 col-md-offset-4">
-                        <h2><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#showObject" aria-expanded="false" aria-controls="collapseExample">Object</button></h2>
+                <div id="post-values" class="col-md-6 col-md-offset-3">
+                        <h2><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#showObject" aria-expanded="false" aria-controls="collapseExample">Full Object Output</button></h2>
                         <p id="showObject" class="collapse"><?php print_r( $storage_test ) ?></p>
                 </div>
         </div>
