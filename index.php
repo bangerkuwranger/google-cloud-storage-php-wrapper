@@ -58,9 +58,22 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="jsonkey">JSON Key Content</label>
 		  <div class="col-md-4">                     
-			<textarea class="form-control" id="jsonkey" name="jsonkey"><?php echo $_POST['jsonkey'] ?></textarea>
+			<textarea class="form-control" id="jsonkey" name="jsonkey"><?php echo isset( $_POST['jsonkey'] ) ? $_POST['jsonkey'] : '' ?></textarea>
 		  </div>
 		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="action">Select an Operation</label>
+		  <div class="col-md-4">
+			<select id="action" name="action" class="form-control">
+			  <option value="1">Generate Object Only</option>
+			  <option value="2">Add ACL</option>
+			  <option value="3">Remove ACL</option>
+			</select>
+		  </div>
+		</div>
+
 		
 		<div class="form-group">
 		  <div class="col-md-4 col-md-offset-4">                     
