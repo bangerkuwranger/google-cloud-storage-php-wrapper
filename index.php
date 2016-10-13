@@ -3,6 +3,7 @@ use cAc\GcsWrapper, Google\Cloud\ServiceBuilder;
 $b = '';
 $p = '';
 $a = '';
+$result = null;
 
 if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 	
@@ -21,7 +22,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRole'] ) ) {
 					$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
 					$role = $_POST['aclRole'];
-					$storage_test->bucket_acl_entity_add( $entity, $role );
+					$result = $storage_test->bucket_acl_entity_add( $entity, $role );
 				}
 				break;
 			case 3:
@@ -123,10 +124,21 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
         </div>
 </content>
 <footer class="container">
+	<div class="result">
+		<?php
+		if (!empty( $result ) {
+		
+			echo '<h2>Result:</h2>';
+			print_r( $result );
+		
+		}
+		?>
+	</div>
 	<div class="errors">
 		<?php
 		if( isset( $storage_test ) ) {
-		
+			
+			echo '<h2>Errors:</h2>';
 			print_r( $storage_test->errors );
 		
 		}
