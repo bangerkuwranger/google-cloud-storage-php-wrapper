@@ -18,13 +18,13 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 			case 1:
 				break;
 			case 2:
-				if( isset( $_POST['aclValue'] ) ) {
-					$storage_test->bucket_acl_entity_add( $_POST['aclValue'] );
+				if( isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRoleValue'] ) ) {
+					$storage_test->bucket_acl_entity_add( $_POST['aclEntityValue'], $_POST['aclRoleValue'] );
 				}
 				break;
 			case 3:
-				if( isset( $_POST['aclValue'] ) ) {
-					$storage_test->bucket_acl_entity_remove( $_POST['aclValue'] );
+				if( isset( $_POST['aclEntityValue'] ) ) {
+					$storage_test->bucket_acl_entity_remove( $_POST['aclEntityValue'] );
 				}
 				break;
 		
