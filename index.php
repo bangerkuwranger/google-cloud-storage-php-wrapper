@@ -2,6 +2,7 @@
 use cAc\GcsWrapper, Google\Cloud\ServiceBuilder;
 $b = '';
 $p = '';
+$a = '';
 
 if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 	
@@ -9,8 +10,26 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 	
 		$b = $_POST['bucketid'];
 		$p = $_POST['projectid'];
+		$a = isset( $_POST['action' ) ? $_POST['action'] : '';
 		require_once( __DIR__ . '/GcsWrapper.php' );
 		$storage_test = new cAc\GcsWrapper\GoogleCloudStorage( $p, $_POST['jsonkey'], $b );	
+		switch( $a ) {
+			
+			case 1:
+				break;
+			case 2:
+				if( isset( $_POST['aclValue'] ) ) {
+					$storage_test->bucket_acl_entity_add( $_POST['aclValue'] )
+				}
+				break;
+			case 3:
+				if( isset( $_POST['aclValue'] ) ) {
+					$storage_test->bucket_acl_entity_remove( $_POST['aclValue'] )
+				}
+				break;
+		
+		}
+	
 	}
 
 }
@@ -23,6 +42,8 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="js/test.js"></script>
 
 <header class="container">
 <h1>GCS Wrapper Test</h1>
@@ -63,13 +84,13 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		</div>
 		
 		<!-- Select Basic -->
-		<div class="form-group">
+		<div id="action-select" class="form-group">
 		  <label class="col-md-4 control-label" for="action">Select an Operation</label>
 		  <div class="col-md-4">
 			<select id="action" name="action" class="form-control">
 			  <option value="1">Generate Object Only</option>
-			  <option value="2">Add ACL</option>
-			  <option value="3">Remove ACL</option>
+			  <option value="2">Add ACL entity to bucket</option>
+			  <option value="3">Remove ACL entity from bucket</option>
 			</select>
 		  </div>
 		</div>
@@ -88,7 +109,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		<div id="post-values" class="col-md-6 col-md-offset-3">
 			<h2>Project: <?php echo $p ?></h2>
 			<h2>Bucket: <?php echo $b ?></h2>
-			<p><?php // print_r( json_decode( $_POST['jsonkey'], true ) ) ?></p>
+			<h2>Operation<?php echo $a ?></h2>
 		</div>
 	</div>
 	<div class="row">
