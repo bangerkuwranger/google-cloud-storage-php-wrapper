@@ -125,7 +125,7 @@ class GoogleCloudStorage {
 	 }
 	 
 	 //Options - delimiter(string)[null], maxResults(int)[1000], prefix(string)[null], projection(string)[null], versions(bool)[false], fields(string)[null]
-	 public functions bucket_get_objects( $options = array() ) {
+	 public function bucket_get_objects( $options = array() ) {
 	 	
 	 	if( ! is_array( $options ) ) {
 		
