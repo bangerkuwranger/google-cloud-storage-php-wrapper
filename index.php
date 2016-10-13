@@ -25,7 +25,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 				}
 				break;
 			case 3:
-				if( isset( $_POST['aclEntityType'] ) && $_POST['aclEntityValue'] ) ) {
+				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) ) {
 					$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
 					$storage_test->bucket_acl_entity_remove( $entity );
 				}
