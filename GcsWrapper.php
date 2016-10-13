@@ -196,7 +196,7 @@ class GoogleCloudStorage {
 	public function bucket_default_acl_entity_get( $entity ) {
 	
 		$opts = array(
-			'entity'	=> $entity;
+			'entity'	=> $entity
 		);
 		return $this->bucket_default_acl->get( $opts );
 	
