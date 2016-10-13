@@ -36,7 +36,7 @@ class GoogleCloudStorage {
 			$this->get_bucket();
 			$this->get_bucket_acl();
 			$this->get_bucket_default_acl();
-			$this->objects = $this->bucket->objects( $options );
+			$this->objects = $this->bucket->objects();
 		}
 	
 	}
