@@ -126,7 +126,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 <footer class="container">
 	<div class="result">
 		<?php
-		if (!empty( $result ) {
+		if (!empty( $result ) ) {
 		
 			echo '<h2>Result:</h2>';
 			print_r( $result );
