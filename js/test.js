@@ -8,10 +8,10 @@ jQuery(function($) {
 		
 		switch (action) {
 		
-			case 2:
+			case '2':
 				$('#action-select').append(aclField);
 				break;
-			case 3:
+			case '3':
 				$('#action-select').append(aclField);
 				break;
 		
