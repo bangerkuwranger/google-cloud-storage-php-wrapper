@@ -19,12 +19,12 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 				break;
 			case 2:
 				if( isset( $_POST['aclValue'] ) ) {
-					$storage_test->bucket_acl_entity_add( $_POST['aclValue'] )
+					$storage_test->bucket_acl_entity_add( $_POST['aclValue'] );
 				}
 				break;
 			case 3:
 				if( isset( $_POST['aclValue'] ) ) {
-					$storage_test->bucket_acl_entity_remove( $_POST['aclValue'] )
+					$storage_test->bucket_acl_entity_remove( $_POST['aclValue'] );
 				}
 				break;
 		
