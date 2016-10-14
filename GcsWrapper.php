@@ -157,7 +157,7 @@ class GoogleCloudStorage {
 		catch( \Exception $e ) {
 		
 			$result = $e;
-			$this->errors[$this->error_count] = $e->getMessage;
+			$this->errors[$this->error_count] = $e->getMessage();
 			$this->error_count++;
 		
 		}
@@ -177,7 +177,7 @@ class GoogleCloudStorage {
 		catch( \Exception $e ) {
 		
 			$result = $e;
-			$this->errors[$this->error_count] = $e->getMessage;
+			$this->errors[$this->error_count] = $e->getMessage();
 			$this->error_count++;
 			
 		}
