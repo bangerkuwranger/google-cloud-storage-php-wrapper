@@ -19,7 +19,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 	
 		$b = $_POST['bucketid'];
 		$p = $_POST['projectid'];
-		$a = isset( $_POST['action'] ) ? intval( $_POST['action'] ) : '';
+		$a = isset( $_POST['action'] ) ? intval( $_POST['action'] ) : 1;
 		require_once( __DIR__ . '/GcsWrapper.php' );
 		$storage_test = new cAc\GcsWrapper\GoogleCloudStorage( $p, $_POST['jsonkey'], $b );	
 		switch( $a ) {
@@ -100,9 +100,13 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		  <label class="col-md-4 control-label" for="action">Select an Operation</label>
 		  <div class="col-md-4">
 			<select id="action" name="action" class="form-control">
-			<?php 
+			<?php
 			foreach( $ops as $key=>$value ) {
-			  	echo '<option value="' . $key . '">' . $value . '</option>';
+				$checked = '';
+				if( $key === $a ) {
+					$checked = ' selected="selected"';
+				}
+			  	echo '<option value="' . $key . '"' . $checked . '>' . $value . '</option>';
 			}
 			?>
 			</select>
