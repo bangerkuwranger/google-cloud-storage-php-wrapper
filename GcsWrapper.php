@@ -2,7 +2,7 @@
 namespace cAc\GcsWrapper;
 
 include_once('vendor/autoload.php');
-use Google\Cloud\ServiceBuilder;
+use Google\Cloud\ServiceBuilder, Google\Cloud\Exception;
 
 
 //$object property is set by method object_exists()
@@ -154,7 +154,7 @@ class GoogleCloudStorage {
 			$this->bucket_acl->add( $entity, $role);
 		
 		}
-		catch( Google\Cloud\Exception $e ) {
+		catch( Exception $e ) {
 		
 			$result = $e;
 		
@@ -172,7 +172,7 @@ class GoogleCloudStorage {
 			$result = false;
 			
 		}
-		catch( Google\Cloud\Exception $e ) {
+		catch( Exception $e ) {
 		
 			$result = $e;
 		}
