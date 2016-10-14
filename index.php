@@ -56,9 +56,9 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 					else {
 					
 						$entity = $_POST['aclEntityType'];
-						$storage_test->bucket_acl_entity_remove( $entity );
 					
 					}
+					$result = $storage_test->bucket_acl_entity_remove( $entity );
 					
 				}
 				break;
@@ -73,8 +73,9 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 					else {
 					
 						$entity = $_POST['aclEntityType'];
-						$storage_test->bucket_acl_entity_get( $entity );
+						
 					}
+					$result = $storage_test->bucket_acl_entity_get( $entity );
 				
 				}
 				break;
