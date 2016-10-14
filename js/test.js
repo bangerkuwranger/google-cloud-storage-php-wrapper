@@ -25,6 +25,13 @@ jQuery(function($) {
 			case '3':
 				$('#action-select').after(aclEntityField);
 				break;
+			case '4':
+				$('#action-select').after(aclEntityField);
+				break;
+			case '5':
+				$('#action-select').after(aclRoleField);
+				$('#action-select').after(aclEntityField);
+				break;
 				
 		
 		}

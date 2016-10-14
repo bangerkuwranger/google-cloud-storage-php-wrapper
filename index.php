@@ -9,7 +9,9 @@ $ops = array(
 
 	1		=> 'Generate Object Only',
 	2		=> 'Add ACL Entity to Bucket',
-	3		=> 'Remove ACL Entity from Bucket'
+	3		=> 'Remove ACL Entity from Bucket',
+	4		=> 'Get ACL Role for Entity from Bucket',
+	5		=> 'Update ACL Entity Role for Bucket'
 
 );
 
@@ -40,8 +42,34 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 				break;
 			case 3:
 				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) ) {
-					$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					}
+					else {
+						$entity = $_POST['aclEntityType'];
 					$storage_test->bucket_acl_entity_remove( $entity );
+				}
+				break;
+			case 4:
+				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) ) {
+					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					}
+					else {
+						$entity = $_POST['aclEntityType'];
+					$storage_test->bucket_acl_entity_get( $entity );
+				}
+				break;
+			case 5:
+				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRole'] ) ) {
+					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					}
+					else {
+						$entity = $_POST['aclEntityType'];
+					}
+					$role = $_POST['aclRole'];
+					$result = $storage_test->bucket_acl_entity_update( $entity, $role );
 				}
 				break;
 		

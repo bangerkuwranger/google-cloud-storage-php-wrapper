@@ -189,13 +189,39 @@ class GoogleCloudStorage {
 		$opts = array(
 			'entity'	=> $entity
 		);
-		return $this->bucket_acl->get( $opts );
+		$result = null;
+		try {
+			
+			$result = $this->bucket_acl->get( $opts );
+		
+		}
+		catch( \Exception $e ) {
+		
+			$result = $e;
+			$this->errors[$this->error_count] = $e->getServiceException()->getMessage();
+			$this->error_count++;
+		
+		}
+		return $result;
 	
 	}
 	
 	public function bucket_acl_entity_update( $entity, $role ) {
 	
-		return $this->bucket_acl->update( $entity, $role );
+		$result = null;
+		try {
+		
+			$result = $this->bucket_acl->update( $entity, $role );
+		
+		}
+		catch( \Exception $e ) {
+		
+			$result = $e;
+			$this->errors[$this->error_count] = $e->getServiceException()->getMessage();
+			$this->error_count++;
+		
+		}
+		return $result;
 	
 	}
 	
