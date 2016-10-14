@@ -154,7 +154,7 @@ class GoogleCloudStorage {
 			$this->bucket_acl->add( $entity, $role);
 		
 		}
-		catch( Exception $e ) {
+		catch( \Exception $e ) {
 		
 			$result = $e;
 		
@@ -172,7 +172,7 @@ class GoogleCloudStorage {
 			$result = false;
 			
 		}
-		catch( Exception $e ) {
+		catch( \Exception $e ) {
 		
 			$result = $e;
 		}
