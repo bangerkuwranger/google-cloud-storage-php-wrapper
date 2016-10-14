@@ -128,8 +128,9 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		<?php
 		if (!empty( $result ) ) {
 		
-			echo '<h2>Result:</h2>';
+			echo '<h2>Result:</h2><pre>';
 			print_r( $result );
+			echo '</pre>';
 		
 		}
 		?>
@@ -138,8 +139,9 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		<?php
 		if( isset( $storage_test ) ) {
 			
-			echo '<h2>Errors:</h2>';
+			echo '<h2>Errors:</h2><pre>';
 			print_r( $storage_test->errors );
+			echo '</pre>';
 		
 		}
 		?>
