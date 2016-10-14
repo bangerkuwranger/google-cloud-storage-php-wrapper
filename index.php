@@ -143,17 +143,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
         </div>
 </content>
 <footer class="container">
-	<div class="result">
-		<?php
-		if (!empty( $result ) ) {
-		
-			echo '<h2>Result:</h2><pre>';
-			print_r( $result );
-			echo '</pre>';
-		
-		}
-		?>
-	</div>
+	
 	<div class="errors">
 		<?php
 		if( isset( $storage_test ) ) {
@@ -165,4 +155,17 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		}
 		?>
 	</div>
+	
+	<div class="result">
+		<?php
+		if (!empty( $result ) ) {
+		
+			echo '<h2>Result:</h2><pre>';
+			print_r( $result );
+			echo '</pre>';
+		
+		}
+		?>
+	</div>
+	
 </footer>
