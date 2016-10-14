@@ -170,8 +170,8 @@ class GoogleCloudStorage {
 		$result = null;
 		try {
 			
-			$this->bucket_acl->delete( $entity);
-			$result = false;
+			$this->bucket_acl->delete( $entity );
+			$result = 'Deleted ACL for ' . $entity;
 			
 		}
 		catch( \Exception $e ) {
