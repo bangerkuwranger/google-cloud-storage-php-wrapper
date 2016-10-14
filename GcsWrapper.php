@@ -148,13 +148,34 @@ class GoogleCloudStorage {
 	
 	public function bucket_acl_entity_add( $entity, $role ) {
 	
-		return $this->bucket_acl->add( $entity, $role);
+		$result = null;
+		try {
+			
+			$this->bucket_acl->add( $entity, $role);
+		
+		}
+		catch( Google\Cloud\Exception $e ) {
+		
+			$result = $e;
+		
+		}
+		return $result;
 	
 	}
 	
 	public function bucket_acl_entity_remove( $entity ) {
 	
-		$this->bucket_acl->delete( $entity);
+		$result = null;
+		try {
+			
+			$this->bucket_acl->delete( $entity);
+			$result = false;
+			
+		}
+		catch( Google\Cloud\Exception $e ) {
+		
+			$result = $e;
+		}
 	
 	}
 	
