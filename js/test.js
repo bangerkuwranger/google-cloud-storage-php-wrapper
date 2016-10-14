@@ -8,7 +8,7 @@ jQuery(function($) {
 		var action = $(this).val();
 		showTestFields( action );
 	
-	}
+	});
 	
 	
 	function showTestFields( action ) {
@@ -44,6 +44,6 @@ jQuery(function($) {
 		
 		}
 	
-	});
+	}
 
 });
