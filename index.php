@@ -101,7 +101,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		  <div class="col-md-4">
 			<select id="action" name="action" class="form-control">
 			<?php 
-			foreach( $ops as $key->$value ) {
+			foreach( $ops as $key=>$value ) {
 			  	echo '<option value="' . $key . '">' . $value . '</option>';
 			}
 			?>
