@@ -5,13 +5,21 @@ $p = '';
 $a = '';
 $result = null;
 
+$ops = array(
+
+	1		=> 'Generate Object Only',
+	2		=> 'Add ACL Entity to Bucket',
+	3		=> 'Remove ACL Entity from Bucket'
+
+);
+
 if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 	
 	if( isset( $_POST['projectid'] ) && isset( $_POST['bucketid'] ) && isset( $_POST['jsonkey'] ) ) {
 	
 		$b = $_POST['bucketid'];
 		$p = $_POST['projectid'];
-		$a = isset( $_POST['action'] ) ? $_POST['action'] : '';
+		$a = isset( $_POST['action'] ) ? intval( $_POST['action'] ) : '';
 		require_once( __DIR__ . '/GcsWrapper.php' );
 		$storage_test = new cAc\GcsWrapper\GoogleCloudStorage( $p, $_POST['jsonkey'], $b );	
 		switch( $a ) {
@@ -92,9 +100,9 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		  <label class="col-md-4 control-label" for="action">Select an Operation</label>
 		  <div class="col-md-4">
 			<select id="action" name="action" class="form-control">
-			  <option value="1">Generate Object Only</option>
-			  <option value="2">Add ACL entity to bucket</option>
-			  <option value="3">Remove ACL entity from bucket</option>
+			<?php foreach( $ops as $key->$value ) {
+			  	echo '<option value="' . $key . '">' . $value . '</option>';
+			?>
 			</select>
 		  </div>
 		</div>
@@ -113,7 +121,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 		<div id="post-values" class="col-md-6 col-md-offset-3">
 			<h2>Project: <?php echo $p ?></h2>
 			<h2>Bucket: <?php echo $b ?></h2>
-			<h2>Operation<?php echo $a ?></h2>
+			<h2>Operation: <?php echo $ops[$a] ?></h2>
 		</div>
 	</div>
 	<div class="row">
