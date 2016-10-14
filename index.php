@@ -28,7 +28,12 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 				break;
 			case 2:
 				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRole'] ) ) {
-					$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					}
+					else {
+						$entity = $_POST['aclEntityType'];
+					}
 					$role = $_POST['aclRole'];
 					$result = $storage_test->bucket_acl_entity_add( $entity, $role );
 				}
