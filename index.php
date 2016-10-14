@@ -30,46 +30,70 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 				break;
 			case 2:
 				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRole'] ) ) {
+				
 					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+					
 						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
 					}
 					else {
+					
 						$entity = $_POST['aclEntityType'];
+					
 					}
 					$role = $_POST['aclRole'];
 					$result = $storage_test->bucket_acl_entity_add( $entity, $role );
+				
 				}
 				break;
 			case 3:
 				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) ) {
-					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+				
+					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType'] ) {
+					
 						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					
 					}
 					else {
+					
 						$entity = $_POST['aclEntityType'];
-					$storage_test->bucket_acl_entity_remove( $entity );
+						$storage_test->bucket_acl_entity_remove( $entity );
+					
+					}
+					
 				}
 				break;
 			case 4:
 				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) ) {
+				
 					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+					
 						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					
 					}
 					else {
+					
 						$entity = $_POST['aclEntityType'];
-					$storage_test->bucket_acl_entity_get( $entity );
+						$storage_test->bucket_acl_entity_get( $entity );
+					}
+				
 				}
 				break;
 			case 5:
 				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRole'] ) ) {
+				
 					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+					
 						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					
 					}
 					else {
+					 
 						$entity = $_POST['aclEntityType'];
+					
 					}
 					$role = $_POST['aclRole'];
 					$result = $storage_test->bucket_acl_entity_update( $entity, $role );
+					
 				}
 				break;
 		
