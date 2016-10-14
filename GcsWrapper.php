@@ -314,13 +314,13 @@ class GoogleCloudStorage {
 	
 	protected function get_bucket_acl() {
 	
-		$this->bucket_acl = $this->bucket->defaultAcl();
+		$this->bucket_acl = $this->bucket->acl();
 	
 	}
 	
 	protected function get_bucket_default_acl() {
 	
-		$this->bucket_default_acl = $this->bucket->acl();
+		$this->bucket_default_acl = $this->bucket->defaultAcl();
 	
 	}
 	
