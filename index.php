@@ -104,10 +104,10 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 				if( isset( $_FILES['fileUpload'] ) && isset( $_POST['predefinedAcl'] ) ) {
 				
 					$target_dir = "uploads/";
-					$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+					$target_file = $target_dir . basename($_FILES["fileUpload"]["name"]);
 					$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
-					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-						$result = $storage_test->bucket_upload_object( $target_file, $_FILES["fileToUpload"]["name"], false, $permissions = $_POST['predefinedAcl'] );
+					if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_file)) {
+						$result = $storage_test->bucket_upload_object( $target_file, $_FILES["fileUpload"]["name"], false, $permissions = $_POST['predefinedAcl'] );
 					}
 					else {
 						$result = "Sorry, there was an error uploading your file.
