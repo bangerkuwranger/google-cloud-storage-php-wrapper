@@ -88,7 +88,7 @@ class GoogleCloudStorage {
 	 	try {
 	 	
 	 		$this->object = $this->bucket->compose( $sources, $final_name );
-	 		get_object_acl();
+	 		$this->get_object_acl();
 	 		$result = $this->object;
 	 	
 	 	}
@@ -115,7 +115,7 @@ class GoogleCloudStorage {
 	 	try {
 	 	
 	 		$this->object = $uploader->upload( $source, $opts );
-			get_object_acl();
+			$this->get_object_acl();
 			$result = $this->object;
 		
 		}
@@ -125,7 +125,7 @@ class GoogleCloudStorage {
 			
 				$resumeUri = $uploader->getResumeUri();
 				$this->object = $uploader->resume($resumeUri);
-				get_object_acl();
+				$this->get_object_acl();
 				$result = $this->object;
 			
 			}
@@ -164,7 +164,7 @@ class GoogleCloudStorage {
 			$this->error_count++;
 			
 		}
-	 	get_object_acl();
+	 	$this->get_object_acl();
 	 	return $result;
 	 
 	 }
