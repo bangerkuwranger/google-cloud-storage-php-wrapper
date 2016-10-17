@@ -80,18 +80,32 @@ class GoogleCloudStorage {
 	 
 	 public function bucket_object_concatenate( $obj1, $obj2, $final_name ) {
 	 
+	 	$result = null;
 	 	$sources = array(
 	 		$obj1,
 	 		$obj2
 	 	);
-	 	$this->object = $this->bucket->compose( $sources, $final_name );
-	 	get_object_acl();
-	 	return $this->object;
+	 	try {
+	 	
+	 		$this->object = $this->bucket->compose( $sources, $final_name );
+	 		get_object_acl();
+	 		$result = $this->object;
+	 	
+	 	}
+	 	catch( \Exception $e ) {
+	
+			$result = $e;
+			$this->errors[$this->error_count] = $e->getServiceException()->getMessage();
+			$this->error_count++;
+		
+		}
+	 	return $result;
 	 
 	 }
 	 
 	 public function bucket_upload_large_object( $source, $target_name, $use_validation = false, $permissions = "private" ) {
 	 
+	 	$result = null;
 	 	$opts = array(
 	 		'name'			=> $target_name,
 	 		'validate'		=> $use_validation,
@@ -99,42 +113,84 @@ class GoogleCloudStorage {
 	 	);
 	 	$uploader = $this->bucket->getResumableUploader( $source, $opts );
 	 	try {
+	 	
 	 		$this->object = $uploader->upload( $source, $opts );
 			get_object_acl();
+			$result = $this->object;
+		
 		}
 		catch( GoogleException $ex ) {
-			$resumeUri = $uploader->getResumeUri();
-			$this->object = $uploader->resume($resumeUri);
-			get_object_acl();
+		
+			try {
+			
+				$resumeUri = $uploader->getResumeUri();
+				$this->object = $uploader->resume($resumeUri);
+				get_object_acl();
+				$result = $this->object;
+			
+			}
+			catch( \Exception $e ) {
+		
+				$result = $e;
+				$this->errors[$this->error_count] = $e->getServiceException()->getMessage();
+				$this->error_count++;
+			
+			}
+			
+			
 		}
-		return $this->object;
+		return $result;
 	 
 	 }
 	 
 	 public function bucket_upload_object( $source, $target_name, $use_validation = false, $permissions = "private" ) {
 	 
+	 	$result = null;
 	 	$opts = array(
 	 		'name'			=> $target_name,
 	 		'validate'		=> $use_validation,
 	 		'predefinedAcl'	=> $permissions
 	 	);
-	 	$this->object = $this->bucket->upload( $source, $opts );
+		try {
+			
+			$result = $this->object = $this->bucket->upload( $source, $opts );
+			
+		}
+		catch( \Exception $e ) {
+		
+			$result = $e;
+			$this->errors[$this->error_count] = $e->getServiceException()->getMessage();
+			$this->error_count++;
+			
+		}
 	 	get_object_acl();
-	 	return $this->object;
+	 	return $result;
 	 
 	 }
 	 
 	 //Options - delimiter(string)[null], maxResults(int)[1000], prefix(string)[null], projection(string)[null], versions(bool)[false], fields(string)[null]
 	 public function bucket_get_objects( $options = array() ) {
 	 	
+	 	$result = null;
 	 	if( ! is_array( $options ) ) {
 		
 			$this->errors[$this->error_count] = 'options not given as array';
 			$this->error_count++;
 		
 		}
+		try {
 		
-		return $this->bucket->objects( $options );
+			$result = $this->bucket->objects( $options );
+		
+		}
+		catch( \Exception $e ) {
+	
+			$result = $e;
+			$this->errors[$this->error_count] = $e->getServiceException()->getMessage();
+			$this->error_count++;
+		
+		}
+		return $result;		
 		
 	 }
 	

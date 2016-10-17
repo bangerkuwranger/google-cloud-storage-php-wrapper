@@ -101,21 +101,18 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 				}
 				break;
 			case 6:
-				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRole'] ) ) {
+				if( isset( $_FILES['fileUpload'] ) && isset( $_POST['predefinedAcl'] ) ) {
 				
-					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
-					
-						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
-					
+					$target_dir = "/tmp/uploads/";
+					$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+					$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
+					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+						$result = $storage_test->bucket_upload_object( $target_file, $_FILES["fileToUpload"]["name"], false, $permissions = $_POST['predefinedAcl'] );
 					}
 					else {
-					 
-						$entity = $_POST['aclEntityType'];
-					
+						$result = "Sorry, there was an error uploading your file.";
 					}
-					$role = $_POST['aclRole'];
-					$result = $storage_test->bucket_acl_entity_update( $entity, $role );
-					
+	
 				}
 				break;
 		
