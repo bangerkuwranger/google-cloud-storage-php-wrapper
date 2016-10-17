@@ -108,10 +108,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 					$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
 					if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_file)) {
 						$uploadThis = fopen( $target_file, 'r' );
-						flock( $uploadThis, LOCK_SH );
 						$result = $storage_test->bucket_upload_object( $uploadThis, $_FILES["fileUpload"]["name"], false, $permissions = $_POST['predefinedAcl'] );
-						flock( $uploadThis, LOCK_UN );
-						fclose( $uploadThis );
 					}
 					else {
 						$result = "Sorry, there was an error uploading your file.
@@ -132,10 +129,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 					$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
 					if (move_uploaded_file($_FILES["fileUpload"]["tmp_name"], $target_file)) {
 						$uploadThis = fopen( $target_file, 'r' );
-						flock( $uploadThis, LOCK_SH );
 						$result = $storage_test->bucket_upload_large_object( $uploadThis, $_FILES["fileUpload"]["name"], false, $permissions = $_POST['predefinedAcl'] );
-						flock( $uploadThis, LOCK_UN );
-						fclose( $uploadThis );
 					}
 					else {
 						$result = "Sorry, there was an error uploading your file.
