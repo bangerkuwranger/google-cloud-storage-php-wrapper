@@ -45,7 +45,7 @@ jQuery(function($) {
 	
 	function clearTestFields() {
 	
-		var allFieldSelectors = '#aclEntityField-entity, #aclEntityField-type, #aclRoleField';
+		var allFieldSelectors = '#aclEntityField-entity, #aclEntityField-type, #aclRoleField, #fileUploadField, #predefinedAclField';
 		$(allFieldSelectors).remove();
 	
 	}
