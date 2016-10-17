@@ -103,7 +103,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 			case 6:
 				if( isset( $_FILES['fileUpload'] ) && isset( $_POST['predefinedAcl'] ) ) {
 				
-					$target_dir = "/tmp/uploads/";
+					$target_dir = "uploads/";
 					$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 					$fileType = pathinfo($target_file,PATHINFO_EXTENSION);
 					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
