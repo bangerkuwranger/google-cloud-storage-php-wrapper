@@ -11,7 +11,10 @@ $ops = array(
 	2		=> 'Add ACL Entity to Bucket',
 	3		=> 'Remove ACL Entity from Bucket',
 	4		=> 'Get ACL Role for Entity from Bucket',
-	5		=> 'Update ACL Entity Role for Bucket'
+	5		=> 'Update ACL Entity Role for Bucket',
+	6		=> 'Upload File to Bucket',
+	7		=> 'Upload Large (>5MB) File to Bucket',
+	8		=> 'Combine 2 Files in Bucket'
 
 );
 
@@ -80,6 +83,24 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 				}
 				break;
 			case 5:
+				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRole'] ) ) {
+				
+					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+					
+						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					
+					}
+					else {
+					 
+						$entity = $_POST['aclEntityType'];
+					
+					}
+					$role = $_POST['aclRole'];
+					$result = $storage_test->bucket_acl_entity_update( $entity, $role );
+					
+				}
+				break;
+			case 6:
 				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRole'] ) ) {
 				
 					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
