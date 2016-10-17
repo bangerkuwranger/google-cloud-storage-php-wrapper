@@ -153,7 +153,8 @@ class GoogleCloudStorage {
 	 	);
 		try {
 			
-			$result = $this->object = $this->bucket->upload( $source, $opts );
+			$this->object = $this->bucket->upload( $source, $opts );
+			$result = $this->object;
 			
 		}
 		catch( \Exception $e ) {
