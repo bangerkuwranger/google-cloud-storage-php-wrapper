@@ -38,6 +38,10 @@ jQuery(function($) {
 				$('#action-select').after(predefinedAclField);
 				$('#action-select').after(fileUploadField);
 				break;
+			case '7':
+				$('#action-select').after(predefinedAclField);
+				$('#action-select').after(fileUploadField);
+				break;
 		
 		}
 	
