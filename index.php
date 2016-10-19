@@ -142,6 +142,31 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 					$result = "Required Field(s) empty.";
 				}
 				break;
+			case 8:
+				if( isset( $_POST['objectOne'] ) && isset( $_POST['objectTwo'] ) ) {
+				
+				
+					$object_one_exists = $storage_test->object_exists( $_POST['objectOne'] );
+					$object_two_exists = $storage_test->object_exists( $_POST['objectTwo'] );
+					
+					if ( $object_one_exists && $object_two_exists ) {
+					
+						$result = $storage_test->bucket_acl_entity_get( $entity );
+					
+					}
+					else {
+					
+						$result = 'An object doesn\'t exist:
+							Object 1 :
+								' . print_r( $object_one_exists, true ) .'
+							Object 2 :
+								' . print_r( $object_two_exists, true );
+						
+					}
+					
+				
+				}
+				break;
 		
 		}
 	

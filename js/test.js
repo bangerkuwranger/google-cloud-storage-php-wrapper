@@ -17,6 +17,7 @@ jQuery(function($) {
 		var aclRoleField = '<div id="aclRoleField" class="form-group"><label class="col-md-4 control-label" for="aclRole">ACL Role</label><div class="col-md-4"><select id="aclRole" name="aclRole" class="form-control"><option value="OWNER">Owner</option><option value="READER">Reader</option><option value="WRITER">Writer</option></select></div></div>';
 		var fileUploadField = '<div id="fileUploadField" class="form-group"><label class="col-md-4 control-label" for="fileUpload">File to Upload</label><div class="col-md-4"><input id="fileUpload" name="fileUpload" class="input-file" type="file"></div></div>';
 		var predefinedAclField = '<div id="predefinedAclField" class="form-group"><label class="col-md-4 control-label" for="predefinedAcl">ACL Role</label><div class="col-md-4"><select id="predefinedAcl" name="predefinedAcl" class="form-control"><option value="private">Private</option><option value="projectPrivate">Private, Use Project Roles</option><option value="bucketOwnerRead">Private, Project Members can Read</option><option value="bucketOwnerFullControl">Private, Project Members are Owners</option><option value="authenticatedRead">Public, All Authenticated Users can Read</option><option value="publicRead">Public, All Users can Read</option></select></div></div>';
+		var twoObjects = '<div id="twoObjects-one" class="form-group"><label class="col-md-4 control-label" for="objectOne">Acl Entity</label><div class="col-md-4"><input id="objectOne" name="objectOne" type="text" placeholder="object_name.ftype" class="form-control input-md" ></div></div><div id="twoObjects-two" class="form-group"><label class="col-md-4 control-label" for="objectTwo">Acl Entity</label><div class="col-md-4"><input id="objectTwo" name="objectTwo" type="text" placeholder="object_name.ftype" class="form-control input-md" ></div></div>';
 		clearTestFields();
 		switch (action) {
 		
@@ -41,6 +42,9 @@ jQuery(function($) {
 			case '7':
 				$('#action-select').after(predefinedAclField);
 				$('#action-select').after(fileUploadField);
+				break;
+			case '8':
+				$('#action-select').after(twoObjects);
 				break;
 		
 		}
