@@ -14,7 +14,8 @@ $ops = array(
 	5		=> 'Update ACL Entity Role for Bucket',
 	6		=> 'Upload File to Bucket',
 	7		=> 'Upload Large (>5MB) File to Bucket',
-	8		=> 'Combine 2 Files in Bucket'
+	8		=> 'Combine 2 Files in Bucket',
+	9		=> 'Get all Objects in Bucket'
 
 );
 
@@ -168,6 +169,9 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 					
 				
 				}
+				break;
+			case 9:
+				$result = $storage_test->bucket_get_objects();
 				break;
 		
 		}
