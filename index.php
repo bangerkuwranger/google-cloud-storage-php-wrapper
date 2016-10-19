@@ -152,7 +152,7 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 					if ( $object_one_exists && $object_two_exists ) {
 					
 						$ext = '.' . array_pop( explode( '.', $_POST['objectTwo'] ) );
-						$file_name = str_replace( $ext, '' $_POST['objectOne'] ) . '_' . str_replace( $ext, '' $_POST['objectTwo'] ) . $ext;
+						$file_name = str_replace( $ext, '', $_POST['objectOne'] ) . '_' . str_replace( $ext, '', $_POST['objectTwo'] ) . $ext;
 						$result = $storage_test->bucket_object_concatenate( $_POST['objectOne'], $_POST['objectTwo'], $file_name );
 					
 					}
