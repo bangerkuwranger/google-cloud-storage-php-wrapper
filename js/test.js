@@ -53,7 +53,7 @@ jQuery(function($) {
 	
 	function clearTestFields() {
 	
-		var allFieldSelectors = '#aclEntityField-entity, #aclEntityField-type, #aclRoleField, #fileUploadField, #predefinedAclField';
+		var allFieldSelectors = '#aclEntityField-entity, #aclEntityField-type, #aclRoleField, #fileUploadField, #predefinedAclField, #twoObjects-one, #twoObjects-two';
 		$(allFieldSelectors).remove();
 	
 	}
