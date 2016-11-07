@@ -10,12 +10,23 @@ $ops = array(
 	1		=> 'Generate Object Only',
 	2		=> 'Add ACL Entity to Bucket',
 	3		=> 'Remove ACL Entity from Bucket',
-	4		=> 'Get ACL Role for Entity from Bucket',
+	4		=> 'Get ACL Roles for Entity from Bucket',
 	5		=> 'Update ACL Entity Role for Bucket',
 	6		=> 'Upload File to Bucket',
 	7		=> 'Upload Large (>5MB) File to Bucket',
 	8		=> 'Combine 2 Files in Bucket',
-	9		=> 'Get all Objects in Bucket'
+	9		=> 'Get all Objects in Bucket',
+	10		=> 'Get Bucket Info',
+	11		=> 'Get Default ACL Roles for Objects',
+	12		=> 'Add Default ACL Role for Objects',
+	13		=> 'Remove Default ACL Role for Objects',
+	14		=> 'Update Default ACL Role for Objects',
+	15		=> 'Check if Object(s) Exists',
+	16		=> 'Get Object(s) Info',
+	17		=> 'Download Object(s) as File',
+// 	18		=> 'Rename Object',
+// 	19		=> 'Delete Object',
+// 	20		=> 'Delete Bucket'
 
 );
 
@@ -173,7 +184,147 @@ if( isset( $_POST['submit'] ) && "Submit" === $_POST['submit'] ) {
 			case 9:
 				$result = $storage_test->bucket_get_objects();
 				break;
-		
+			case 10:
+				$result = $storage_test->bucket_get_info();
+				break;
+			case 11:
+				$result = $storage_test->bucket_default_acl_entity_get();
+				break;
+			case 12:
+				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRole'] ) ) {
+				
+					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+					
+						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					}
+					else {
+					
+						$entity = $_POST['aclEntityType'];
+					
+					}
+					$role = $_POST['aclRole'];
+					$result = $storage_test->bucket_default_acl_entity_add( $entity, $role );
+				
+				}
+				break;
+			case 13:
+				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) ) {
+				
+					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType'] ) {
+					
+						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					
+					}
+					else {
+					
+						$entity = $_POST['aclEntityType'];
+					
+					}
+					$result = $storage_test->bucket_default_acl_entity_remove( $entity );
+					
+				}
+				break;
+			case 14:
+				if( isset( $_POST['aclEntityType'] ) && isset( $_POST['aclEntityValue'] ) && isset( $_POST['aclRole'] ) ) {
+				
+					if ('allUsers' !== $_POST['aclEntityType'] && 'allAuthenticatedUsers' !== $_POST['aclEntityType']) {
+					
+						$entity = $_POST['aclEntityType'] . $_POST['aclEntityValue'];
+					
+					}
+					else {
+					 
+						$entity = $_POST['aclEntityType'];
+					
+					}
+					$role = $_POST['aclRole'];
+					$result = $storage_test->bucket_default_acl_entity_update( $entity, $role );
+					
+				}
+				break;
+			case 15:
+				$result_one = '';
+				$result_two = '';
+				if( isset( $_POST['objectOne'] ) ) {
+				
+					$result_one = $_POST['objectOne'] . ' exists: ' . $storage_test->object_exists( $_POST['objectOne'] );
+				
+				}
+				if( isset( $_POST['objectTwo'] ) ) {
+				
+					$result_two = $_POST['objectTwo'] . ' exists: ' . $storage_test->object_exists( $_POST['objectTwo'] );
+				
+				}
+				if( !( isset( $_POST['objectOne'] ) ) && !( isset( $_POST['objectTwo'] ) ) ) {
+				
+					$result = 'An object isn\'t set.';
+				
+				}
+				else {
+				
+					$result = $result_one . '
+					' . $result_two;
+				
+				}
+				break;
+			case 16:
+				$result_one = '';
+				$result_two = '';
+				if( isset( $_POST['objectOne'] )  && $storage_test->object_exists( $_POST['objectOne'] ) {
+				
+					$result_one = $_POST['objectOne'] . ' info:
+						' . $storage_test->object_get_info() );
+				
+				}
+				if( isset( $_POST['objectTwo'] ) && $storage_test->object_exists( $_POST['objectTwo'] ) {
+				
+					$result_two = $_POST['objectTwo'] . ' exists:
+						' . $storage_test->object_get_info() );
+				
+				}
+				if( !( isset( $_POST['objectOne'] ) ) && !( isset( $_POST['objectTwo'] ) ) ) {
+				
+					$result = 'No object is selected.';
+				
+				}
+				else {
+				
+					$result = $result_one . '
+					' . $result_two;
+				
+				}
+				break;
+			case 17:
+				$result_one = '';
+				$result_two = '';
+				$path = '~/';
+				if( isset( $_POST['objectOne'] )  && $storage_test->object_exists( $_POST['objectOne'] ) {
+				
+					$destination = $path . $_POST['objectOne'];
+					$dl_one = $this->$object->downloadToFile( $destination );
+					$result_one = $_POST['objectOne'] . ' downloaded to ' . $destination . ': ' . $dl_one;
+				
+				}
+				if( isset( $_POST['objectTwo'] ) && $storage_test->object_exists( $_POST['objectTwo'] ) {
+				
+					$destination = $path . $_POST['objectTwo'];
+					$dl_two = $this->$object->downloadToFile( $destination );
+					$result_two = $_POST['objectTwo'] . ' downloaded to ' . $destination . ': ' . $dl_two;
+				
+				}
+				if( !( isset( $_POST['objectOne'] ) ) && !( isset( $_POST['objectTwo'] ) ) ) {
+				
+					$result = 'No object is selected for download.';
+				
+				}
+				else {
+				
+					$result = $result_one . '
+					' . $result_two;
+				
+				}
+				break;
+			
 		}
 	
 	}

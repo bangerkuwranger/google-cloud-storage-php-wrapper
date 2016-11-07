@@ -46,6 +46,26 @@ jQuery(function($) {
 			case '8':
 				$('#action-select').after(twoObjects);
 				break;
+			case '12':
+				$('#action-select').after(aclRoleField);
+				$('#action-select').after(aclEntityField);
+				break;
+			case '13':
+				$('#action-select').after(aclEntityField);
+				break;
+			case '14':
+				$('#action-select').after(aclRoleField);
+				$('#action-select').after(aclEntityField);
+				break;
+			case '15':
+				$('#action-select').after(twoObjects);
+				break;
+			case '16':
+				$('#action-select').after(twoObjects);
+				break;
+			case '17':
+				$('#action-select').after(twoObjects);
+				break;
 		
 		}
 	
