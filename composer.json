@@ -2,6 +2,7 @@
   "name": "bangerkuwranger/google-cloud-storage-php-wrapper",
   "description": "Google Cloud API PHP Wrapper for interacting with Google Cloud Storage",
   "license": "MIT",
+  "version": "1.0.0",
   "authors": [
     {
     	"name": "Chad A. Carino",
