@@ -4,10 +4,10 @@
   "license": "MIT",
   "version": "1.0.1",
   "authors": [
-    {
-    	"name": "Chad A. Carino",
-    	"email": "artist@chadacarino.com"
-    }
+	{
+		"name": "Ramki",
+		"email": "ram10raj@gmail.com"
+	}
   ],
   "autoload": {
     "psr-4": {
