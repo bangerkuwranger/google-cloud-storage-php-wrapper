@@ -1,8 +1,8 @@
 {
-  "name": "ram10raj/custom-google-cloud",
+  "name": "bangerkuwranger/google-cloud-storage-php-wrapper",
   "description": "Google Cloud API PHP Wrapper for interacting with Google Cloud Storage",
   "license": "MIT",
-  "version": "3.0.1",
+  "version": "1.0.1",
   "authors": [
 	{
 		"name": "Ramki",
