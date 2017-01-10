@@ -1,7 +1,7 @@
 <?php
 namespace cAc\GcsWrapper;
 
-include_once('vendor/autoload.php');
+//include_once('vendor/autoload.php');
 use Google\Cloud\ServiceBuilder, Google\Cloud\Exception;
 
 
